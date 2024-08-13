@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import CurrentDate from "./currentDate";
 import "./weather.css";
+import WeatherInfo from "./WeatherInfo";
 
-export default function Weather() {
+export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.city);
 
   function handleResponse(response) {
     console.log(response.data);
@@ -21,46 +23,39 @@ export default function Weather() {
     });
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+  function handleCityInput(event) {
+    setCity(event.target.value);
+  }
+
+  function search() {
+    const apiKey = "d3e48bf033atf207aaaofb4545b2099f";
+
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
   if (weatherData.ready) {
     return (
       <div className="weather-info">
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             type="search"
             placeholder="Enter a city.."
             className="form-input"
+            autoFocus="on"
+            onChange={handleCityInput}
           />
           <input type="submit" value="Search" className="search-input" />
         </form>
-
-        <h1>{weatherData.city}</h1>
-
-        <div className="row">
-          <div className="col-md-10">
-            <ul>
-              <li>
-                <CurrentDate date={weatherData.date} /> {weatherData.desciption}
-              </li>
-              <li>
-                Humidity:{" "}
-                <span className="humidity">{weatherData.humidity}%</span>, Wind:
-                <span className="wind">{weatherData.wind}km/h</span>
-              </li>
-            </ul>
-          </div>
-          <div className="col-md-2">
-            <img src={weatherData.iconUrl} />
-            {Math.round(weatherData.temperature)}
-            <span className="weather-degrees">°C</span>
-          </div>
-        </div>
+        <WeatherInfo data={weatherData} />
       </div>
     );
   } else {
-    const apiKey = "d3e48bf033atf207aaaofb4545b2099f";
-    let city = "Tokyo";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-    axios.get(apiUrl).then(handleResponse);
+    search();
     return <p>Loading....</p>;
   }
 }
