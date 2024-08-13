@@ -9,7 +9,11 @@ export default function WeatherInfo(props) {
         <div className="col-md-10">
           <ul>
             <li>
-              <CurrentDate date={props.data.date} /> {props.data.desciption}
+              <span className="text-capitalise">
+                {" "}
+                <CurrentDate date={props.data.date} />
+                {props.data.description}
+              </span>
             </li>
             <li>
               Humidity: <span className="humidity">{props.data.humidity}%</span>
