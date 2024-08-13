@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import CurrentDate from "./currentDate";
 import "./weather.css";
 
 export default function Weather() {
   const [weatherData, setWeatherData] = useState({ ready: false });
 
   function handleResponse(response) {
-    console.log(response.data.temperature);
+    console.log(response.data);
     setWeatherData({
       ready: true,
 
@@ -16,6 +17,7 @@ export default function Weather() {
       wind: response.data.wind.speed,
       desciption: response.data.condition.desciption,
       iconUrl: response.data.condition.icon_Url,
+      date: new Date(response.data.time * 1000),
     });
   }
 
@@ -36,10 +38,12 @@ export default function Weather() {
         <div className="row">
           <div className="col-md-10">
             <ul>
-              <li>Monday 13:36, {weatherData.desciption}</li>
+              <li>
+                <CurrentDate date={weatherData.date} /> {weatherData.desciption}
+              </li>
               <li>
                 Humidity:{" "}
-                <span className="humidity">{weatherData.humidity}</span>, Wind:
+                <span className="humidity">{weatherData.humidity}%</span>, Wind:
                 <span className="wind">{weatherData.wind}km/h</span>
               </li>
             </ul>
