@@ -17,6 +17,14 @@ ul {
   font-weight: bold;
   line-height: 50px;
 }
+.weather-degrees {
+  content: "\00B0";
+  position: relative;
+  top: -0.5em;
+  left: 0.1em;
+  font-size: 70%;
+  font-weight: lighter;
+}
 form {
   margin-bottom: 65px;
 }
