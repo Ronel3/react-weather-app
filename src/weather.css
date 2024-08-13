@@ -1,0 +1,50 @@
+h1 {
+  color: #272142;
+  font-size: 40px;
+  font-weight: 700;
+  margin-left: 25px;
+  margin-bottom: 30px;
+}
+
+ul {
+  font-size: 16px;
+  color: rgba(39, 33, 66, 0.4);
+  font-weight: bold;
+  list-style: none;
+}
+.col-md-2 {
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 50px;
+}
+form {
+  margin-bottom: 65px;
+}
+
+.form-input {
+  background-color: #f9f7fe;
+  border: none;
+  border-radius: 6px;
+  width: 80%;
+  font-size: 16px;
+  padding: 15px 20px;
+}
+.search-input {
+  background: #e44b8d;
+
+  padding: 15px 30px;
+  border: none;
+  font-size: 16px;
+  margin-left: 5px;
+  border-radius: 6px;
+  color: white;
+}
+.humidity {
+  color: #e44b8d;
+}
+.wind {
+  color: #e44b8d;
+}
+a {
+  text-decoration: none;
+}
