@@ -22,7 +22,7 @@ export default function CurrentDate(props) {
   }
   return (
     <div>
-      {day}, {hours}:{minutes}
+      {day} {hours}:{minutes}
     </div>
   );
 }
