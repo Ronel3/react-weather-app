@@ -11,7 +11,8 @@ function App() {
         <a href="https://github.com/Ronel3">Ronel Simelane</a> and is open
         sourced on{" "}
         <a href="https://github.com/Ronel3/react-weather-app">Github</a> and
-        hosted on <a href="">Render.</a>
+        hosted on{" "}
+        <a href="https://react-weather-app-01y9.onrender.com">Render.</a>
       </footer>
     </div>
   );
